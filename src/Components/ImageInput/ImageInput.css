@@ -1,0 +1,7 @@
+.form {
+	width: 700px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: linear-gradient(to left, rgb(229, 102, 255), rgb(82, 255, 148));
+}
