@@ -9,10 +9,11 @@ import Register from './Components/Register/Register';
 import Particles from 'react-particles-js';
 import Clarifai from 'clarifai';
 import './App.css';
+import {API_KEY} from './ApiKey.js'
 
 
 const clariApp = new Clarifai.App({
- apiKey: 'b992071102034873823259902cff6503'
+ apiKey: API_KEY
 });
 
 const particlesOpts = {
