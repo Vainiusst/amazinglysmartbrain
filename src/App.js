@@ -9,12 +9,10 @@ import Register from './Components/Register/Register';
 import Particles from 'react-particles-js';
 import Clarifai from 'clarifai';
 import './App.css';
-import {API_KEY} from './ApiKey.js'
+import { API } from './ApiKey.js'
 
 
-const clariApp = new Clarifai.App({
- apiKey: API_KEY
-});
+const clariApp = new Clarifai.App(API);
 
 const particlesOpts = {
   particles: {
