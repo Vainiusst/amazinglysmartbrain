@@ -6,20 +6,30 @@ class Register extends React.Component {
 		this.state = {
 			email: "",
 			password: "",
-			name: ""
+			name: "",
+			success: true
 		}
 	}
 
 	onEmailChange = (event) => {
-		this.setState({email: event.target.value})
+		this.setState({email: event.target.value});
+		this.setState({success: true});
 	}
 
 	onPasswordChange = (event) => {
-		this.setState({password: event.target.value})
+		this.setState({password: event.target.value});
+		this.setState({success: true});
 	}
 
 	onNameChange = (event) => {
-		this.setState({name: event.target.value})
+		this.setState({name: event.target.value});
+		this.setState({success: true});
+	}
+
+	ifSuccess = (bool) => {
+		if (!bool) {
+			return <p>Such user already exists!</p>
+		}
 	}
 
 	onRegister = () => {
@@ -37,6 +47,8 @@ class Register extends React.Component {
 				if (user.id) {
 					this.props.loadUser(user)
 					this.props.onRouteChange("home");
+				} else {
+					this.setState({success: false});
 				}
 			});		
 	}
@@ -101,6 +113,7 @@ class Register extends React.Component {
 					      type="submit"
 					      value="Register" />
 				    </div>
+				    { this.ifSuccess(this.state.success) }
 				  </div>
 				</main>
 			</article>

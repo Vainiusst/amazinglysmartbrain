@@ -7,7 +7,6 @@ import FaceRecognition from './Components/FaceRecognition/FaceRecognition';
 import SignIn from './Components/SignIn/SignIn';
 import Register from './Components/Register/Register';
 import Particles from 'react-particles-js';
-import Clarifai from 'clarifai';
 import './App.css';
 
 
@@ -135,7 +134,7 @@ class App extends Component {
           : (
               this.state.route === 'register'
               ? <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
-              : <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+              : <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange} isSignedIn={this.state.isSignedIn} />
             )
         }
       </div>

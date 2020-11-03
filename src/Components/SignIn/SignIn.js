@@ -5,16 +5,19 @@ class SignIn extends React.Component {
 		super(props);
 		this.state = {
 			signInEmail: "",
-			signInPassword: ""
+			signInPassword: "",
+			success: true
 		}
 	}
 
 	onEmailChange = (event) => {
-		this.setState({signInEmail: event.target.value})
+		this.setState({signInEmail: event.target.value});
+		this.setState({success: true});
 	}
 
 	onPasswordChange = (event) => {
-		this.setState({signInPassword: event.target.value})
+		this.setState({signInPassword: event.target.value});
+		this.setState({success: true});
 	}
 
 	onSubmitSignIn = () => {
@@ -31,12 +34,20 @@ class SignIn extends React.Component {
 				if (user.id) {
 					this.props.loadUser(user);
 					this.props.onRouteChange("home");
+				} else {
+					this.setState({success: false});
 				}
 			});		
 	}
 
+	ifSuccess = (bool) => {
+		if (!bool) {
+			return <p>Wrong credentials!</p>
+		}
+	}
+
 	render() {
-		const { onRouteChange, loadUser } = this.props;
+		const { onRouteChange } = this.props;
 		return (
 			<article
 				className="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-2 center">
@@ -82,6 +93,7 @@ class SignIn extends React.Component {
 					      type="submit"
 					      value="Sign in" />
 				    </div>
+				    { this.ifSuccess(this.state.success) }
 				    <div className="lh-copy mt3">
 				      <p onClick={() => onRouteChange('register')} className="f5 link dim black db pointer">
 				      	Register
