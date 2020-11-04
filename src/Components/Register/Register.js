@@ -28,7 +28,7 @@ class Register extends React.Component {
 
 	ifSuccess = (bool) => {
 		if (!bool) {
-			return <p>Such user already exists!</p>
+			return <p>Unable to register!</p>
 		}
 	}
 
