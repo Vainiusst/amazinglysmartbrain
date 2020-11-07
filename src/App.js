@@ -114,27 +114,50 @@ class App extends Component {
     this.setState({route: route});
   }
 
+  onKeyPress = (key) => {
+    if (key.charCode === 13) {
+      this.onButtonSubmit();
+    }
+  };
+
   render() {
     return (
       <div className="App">
         <Particles className='particles'
           params={particlesOpts}
         />
-        <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange} />
+        <Navigation
+          isSignedIn={this.state.isSignedIn}
+          onRouteChange={this.onRouteChange}
+        />
         { this.state.route === 'home'
           ? <div>
               <Logo />
-              <Rank name={this.state.user.name} entries={this.state.user.entries}/>
+              <Rank
+                name={this.state.user.name}
+                entries={this.state.user.entries}
+              />
               <ImageInput
                 onInputChange={this.onInputChange}
                 onButtonSubmit={this.onButtonSubmit}
+                onKeyPress={this.onKeyPress}
             />
-            <FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />
+            <FaceRecognition
+              box={this.state.box}
+              imageUrl={this.state.imageUrl}
+            />
           </div>
           : (
               this.state.route === 'register'
-              ? <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
-              : <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange} isSignedIn={this.state.isSignedIn} />
+              ? <Register
+                  loadUser={this.loadUser}
+                  onRouteChange={this.onRouteChange}
+                 />
+              : <SignIn
+                  loadUser={this.loadUser}
+                  onRouteChange={this.onRouteChange}
+                  isSignedIn={this.state.isSignedIn}
+                />
             )
         }
       </div>

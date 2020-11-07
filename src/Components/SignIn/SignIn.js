@@ -46,6 +46,12 @@ class SignIn extends React.Component {
 		}
 	}
 
+	onSignInKeyPress = key => {
+		if (key.charCode === 13) {
+      this.onSubmitSignIn();
+    }
+	}
+
 	render() {
 		const { onRouteChange } = this.props;
 		return (
@@ -67,6 +73,7 @@ class SignIn extends React.Component {
 				        </label>
 				        <input
 				        	onChange={this.onEmailChange}
+				        	onKeyPress={this.onSignInKeyPress}
 				        	className="pa2 input-reset ba bg-transparent hover-black w-100"
 				        	type="email"
 				        	name="email-address"
@@ -80,6 +87,7 @@ class SignIn extends React.Component {
 				        	</label>
 				        <input
 				        	onChange={this.onPasswordChange}
+				        	onKeyPress={this.onSignInKeyPress}
 				        	className="b pa2 input-reset ba bg-transparent hover-black w-100"
 				        	type="password"
 				        	name="password"
@@ -95,7 +103,10 @@ class SignIn extends React.Component {
 				    </div>
 				    { this.ifSuccess(this.state.success) }
 				    <div className="lh-copy mt3">
-				      <p onClick={() => onRouteChange('register')} className="f5 link dim black db pointer">
+				      <p
+				      	onClick={() => onRouteChange('register')}
+				      	className="f5 link dim black db pointer"
+				      >
 				      	Register
 				      </p>
 				    </div>

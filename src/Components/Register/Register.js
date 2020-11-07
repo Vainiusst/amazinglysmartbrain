@@ -53,6 +53,12 @@ class Register extends React.Component {
 			});		
 	}
 
+	onRegisterKeyPress = key => {
+		if (key.charCode === 13) {
+      this.onRegister();
+    }
+	}
+
 	render() {
 		return (
 			<article
@@ -76,7 +82,9 @@ class Register extends React.Component {
 				        	type="text"
 				        	name="name"
 				        	id="name" 
-				        	onChange={this.onNameChange} />
+				        	onChange={this.onNameChange}
+				        	onKeyPress={this.onRegisterKeyPress}
+				        />
 				      </div>
 				      <div className="mt3">
 				        <label
@@ -84,26 +92,29 @@ class Register extends React.Component {
 				        	htmlFor="email-address">
 				        		Email
 				        </label>
-				        <input
-				        	
+				        <input				        	
 				        	className="pa2 input-reset ba bg-transparent hover-black w-100"
 				        	type="email"
 				        	name="email-address"
 				        	id="email-address" 
-				        	onChange={this.onEmailChange} />
+				        	onChange={this.onEmailChange}
+				        	onKeyPress={this.onRegisterKeyPress}
+								/>
 				      </div>
 				      <div className="mv3">
 				        <label
 				        	className="db fw6 lh-copy f6"
 				        	htmlFor="password">
 				        		Password
-				        	</label>
+				        </label>
 				        <input
 				        	className="b pa2 input-reset ba bg-transparent hover-black w-100"
 				        	type="password"
 				        	name="password"
 				        	id="password"
-				        	onChange={this.onPasswordChange} />
+				        	onChange={this.onPasswordChange}
+				        	onKeyPress={this.onRegisterKeyPress}
+				        />
 				      </div>
 				    </fieldset>
 				    <div className="">
