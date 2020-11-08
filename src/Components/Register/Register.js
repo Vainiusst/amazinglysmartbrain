@@ -7,7 +7,8 @@ class Register extends React.Component {
 			email: "",
 			password: "",
 			name: "",
-			success: true
+			success: true,
+			errorCode: ""
 		}
 	}
 
@@ -32,14 +33,33 @@ class Register extends React.Component {
 		}
 	}
 
+	errorHandler = (errorCode) => {
+		if (errorCode === "1") {
+			return <p className="dark-red">Please enter a name!</p>
+		} else if (errorCode === "3") {
+			return <p className="dark-red">Password must be at least 6 characters long!</p>
+		} else if (errorCode === "2") {
+			return <p className="dark-red">Please enter a valid email!</p>
+		}
+	}
+ 
 	onRegister = () => {
+		const { email, password, name } = this.state;
+		const emailPattern = new RegExp("^[a-z0-9]+[a-z0-9.\-_]*@{1}[a-z0-9\-]+\.{1}[a-z]{1,4}\.?[a-z]{1,4}$")
+		if (name.length === 0) {
+			return this.setState({errorCode: "1"})
+		} else if (password.length < 6) {
+			return this.setState({errorCode: "3"})
+		} else if (!emailPattern.test(email)) {
+			return this.setState({errorCode: "2"})
+		}
 		fetch("https://infinite-headland-82185.herokuapp.com/register", {
 			method: 'post',
 			headers: {"Content-Type": "application/json"},
 			body: JSON.stringify({
-				email: this.state.email,
-				password: this.state.password,
-				name: this.state.name
+				email: email,
+				password: password,
+				name: name
 			})
 		})
 			.then(res => res.json())
@@ -124,6 +144,7 @@ class Register extends React.Component {
 					      type="submit"
 					      value="Register" />
 				    </div>
+				    { this.errorHandler(this.state.errorCode) }
 				    { this.ifSuccess(this.state.success) }
 				  </div>
 				</main>

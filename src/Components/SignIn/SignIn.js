@@ -20,6 +20,12 @@ class SignIn extends React.Component {
 		this.setState({success: true});
 	}
 
+	ifSuccess = (bool) => {
+		if (!bool) {
+			return <p className="dark-red">Wrong credentials!</p>
+		}
+	}
+
 	onSubmitSignIn = () => {
 		fetch("https://infinite-headland-82185.herokuapp.com/signin", {
 			method: 'post',
@@ -38,12 +44,6 @@ class SignIn extends React.Component {
 					this.setState({success: false});
 				}
 			});		
-	}
-
-	ifSuccess = (bool) => {
-		if (!bool) {
-			return <p className="dark-red">Wrong credentials!</p>
-		}
 	}
 
 	onSignInKeyPress = key => {
