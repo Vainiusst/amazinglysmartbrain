@@ -42,7 +42,7 @@ class SignIn extends React.Component {
 
 	ifSuccess = (bool) => {
 		if (!bool) {
-			return <p>Wrong credentials!</p>
+			return <p className="dark-red">Wrong credentials!</p>
 		}
 	}
 
@@ -74,7 +74,7 @@ class SignIn extends React.Component {
 				        <input
 				        	onChange={this.onEmailChange}
 				        	onKeyPress={this.onSignInKeyPress}
-				        	className="pa2 input-reset ba bg-transparent hover-black w-100"
+				        	className="h2 pa2 input-reset ba bg-transparent hover-black w-100"
 				        	type="email"
 				        	name="email-address"
 				        	id="email-address" />
@@ -88,7 +88,7 @@ class SignIn extends React.Component {
 				        <input
 				        	onChange={this.onPasswordChange}
 				        	onKeyPress={this.onSignInKeyPress}
-				        	className="b pa2 input-reset ba bg-transparent hover-black w-100"
+				        	className="h2 b pa2 input-reset ba bg-transparent hover-black w-100"
 				        	type="password"
 				        	name="password"
 				        	id="password" />

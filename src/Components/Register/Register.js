@@ -28,7 +28,7 @@ class Register extends React.Component {
 
 	ifSuccess = (bool) => {
 		if (!bool) {
-			return <p>Unable to register!</p>
+			return <p className="dark-red">Unable to register!</p>
 		}
 	}
 
@@ -78,7 +78,7 @@ class Register extends React.Component {
 				        		Name
 				        </label>
 				        <input
-				        	className="pa2 input-reset ba bg-transparent hover-black w-100"
+				        	className="h2 pa2 input-reset ba bg-transparent hover-black w-100"
 				        	type="text"
 				        	name="name"
 				        	id="name" 
@@ -93,7 +93,7 @@ class Register extends React.Component {
 				        		Email
 				        </label>
 				        <input				        	
-				        	className="pa2 input-reset ba bg-transparent hover-black w-100"
+				        	className="h2 pa2 input-reset ba bg-transparent hover-black w-100"
 				        	type="email"
 				        	name="email-address"
 				        	id="email-address" 
@@ -108,7 +108,7 @@ class Register extends React.Component {
 				        		Password
 				        </label>
 				        <input
-				        	className="b pa2 input-reset ba bg-transparent hover-black w-100"
+				        	className="h2 b pa2 input-reset ba bg-transparent hover-black w-100"
 				        	type="password"
 				        	name="password"
 				        	id="password"
